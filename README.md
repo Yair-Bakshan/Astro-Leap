@@ -1,74 +1,79 @@
-# 🚀 Astro Leap
+# Astro Leap
 
-A fast-paced arcade Unity game where you leap between rotating asteroids, build combos, and try not to fall into the void. This project explores physics-based movement, dynamic camera systems, and responsive arcade controls.
+A fast-paced arcade game made with Unity. Leap between rotating asteroids, chain combos, and try not to fall into the void.
 
-[**🎮 Play Now (Itch.io)**](https://devhex.itch.io/astro-leap)
+[**Play in your browser on itch.io**](https://devhex.itch.io/astro-leap)
 
-![Gameplay](https://github.com/Yair-Bakshan/Astro-Leap/blob/main/gameplay.gif)
+[![Gameplay](gameplay.gif)](gameplay.gif)
 
----
+## About
 
-## 🧠 About
+Astro Leap started in 2025 as a small project to practice physics-based movement, camera systems and responsive controls. I then polished it into a complete game.
 
-**Astro Leap** started as a small Unity project in 2025 to explore physics, camera systems, and responsive controls. It was polished so that it will feel *good enough to play at all.*
+## How It Works
 
----
+You stand on a rotating asteroid. It starts to shatter under you, so you have to leap to the next one before it falls apart. If you wait too long, you are launched automatically. Miss the next asteroid and you fall into the void.
 
-## ✨ Features
+## Features
 
-* 🎯 **Skill-Based Gameplay:** Precision jumping between rotating asteroids.
-* 🔥 **Combo System:** Rewards perfect timing to skyrocket your score.
-* 🎥 **Dynamic Camera:** Built with **Cinemachine** for auto-zoom, centering, and screen shake.
-* 💥 **Polished FX:** Particle-driven asteroid destruction and "Shatter" states.
-* 🔊 **Audio System:** Custom manager with pitch variation and reactive soundscapes.
-* 🧾 **Animated UI:** Features a typewriter effect and counting score animations on the death screen.
+- **Skill-based jumping:** time your leap from one asteroid to the next.
+- **Combo system:** every landing adds to your multiplier. If you wait too long, it resets.
+- **Dynamic camera:** Cinemachine zooms to fit the current and next asteroid and shakes the screen on every jump.
+- **Visual effects:** particle explosions and a multi-stage shatter animation on asteroids.
+- **Audio manager:** one central manager for music and sound effects, with random pitch variation.
+- **Animated UI:** score pop animations, a typewriter-style death message and a counting score.
+- **Best score:** saved locally with `PlayerPrefs`.
 
----
+## Controls
 
-## 🎮 Controls
+| Input | Action |
+|---|---|
+| Left click | Leap off the current asteroid |
 
-* **Left Click / Tap** → Jump to the next asteroid.
-* **Menu Navigation** → Use the **Play** button to start your run.
+Use the **Play** button in the menu to start a run.
 
----
+## Getting Started
 
-## 🛠️ Technical Setup
+**Requirements**
 
-### Requirements
-* **Unity 6.0 LTS** or later.
-* **TextMeshPro** & **Cinemachine** (Install via Package Manager).
-* **LeanTween** (Add to project for UI/Object animations).
+- Unity **6000.0.41f1** (Unity 6.0 LTS)
+- LeanTween from the Unity Asset Store (not included in this repository)
 
-### Quick Start
-1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/Yair-Bakshan/Astro-Leap.git
-    ```
-2.  **Configure Scenes:** Ensure `Menu` and `Game` are added to your **Build Settings**.
-3.  **Wire Audio:** Assign clips to the `AudioManager` matching these keys: `MainTheme`, `Type`, `Jump`, `Explosion`, `Lose`, `Shatter`.
-4.  **Hit Play:** Open the `Menu` scene and start leaping!
+Cinemachine 3.1.3, Input System, URP and TextMeshPro are installed automatically through the Package Manager.
 
----
+**Run the project**
 
-## 📂 Project Structure (`Assets/Scripts`)
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Yair-Bakshan/Astro-Leap.git
+   ```
+
+2. Open the folder in Unity Hub with Unity 6000.0.41f1.
+3. Import LeanTween into `Assets/LeanTween/`.
+4. Open `Assets/Scenes/Menu.unity` and press **Play**.
+
+The `Menu` and `Game` scenes are already in the Build Settings, and the audio clips are already assigned.
+
+## Project Structure
+
+Scripts are in `Assets/Scripts`.
 
 | Script | Responsibility |
-| :--- | :--- |
-| **Player.cs** | Handles jump physics, asteroid alignment, and "fall" logic. |
-| **GameManager.cs** | Manages scores, high scores (PlayerPrefs), and death UI. |
-| **SpawnManager.cs** | Procedural asteroid generation and object tracking. |
-| **Asteroid.cs** | Controls rotation speeds and shatter state triggers. |
-| **CustomCamera.cs** | Cinemachine controller for zoom and impulse (shake) logic. |
-| **AudioManager.cs** | Global system for pitch-perfect SFX and music. |
+|---|---|
+| `Player.cs` | Jump physics, asteroid alignment and fall detection |
+| `GameManager.cs` | Score, combo, best score and the death screen |
+| `SpawnManager.cs` | Procedural asteroid spawning |
+| `Asteroid.cs` | Rotation and the shatter stages |
+| `CustomCamera.cs` | Cinemachine zoom and camera shake |
+| `AudioManager.cs` | Music and sound effects |
+| `MenuManager.cs` | Menu scene and the Play button |
 
----
+## Credits
 
-## 📝 Notes
-* **Audio Initialization:** `AudioManager.Start()` initializes sources with `pitch = 0f`. Sound is triggered dynamically during gameplay.
-* **Prefabs:** Ensure `asteroidPrefab` and `particleExplosion` are assigned in the `SpawnManager` and `Player` inspectors.
+- Audio: created by Yair Bakshan
+- Font: Fredoka Bold
 
-## 🤝 Contributing
-Contributions are welcome! Please keep changes focused, follow the existing formatting standards, and add unit tests where applicable.
+## License
 
-## 📄 License
-This project is licensed under the [MIT License](LICENSE).
+Released under the [MIT License](LICENSE).
